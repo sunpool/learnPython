@@ -1,13 +1,11 @@
 input = ["eaabaaefedf", "accbcca", "db"]
 
 
-palinSet = {(x, (i, i + 1)) for i, x in enumerate(inp)} | {(x + inp[i + 1], (i, i + 2)) for i, x in enumerate(inp) if
-                                                           i < len(inp) - 2 and inp[i] == inp[i + 1]}
-print palinSet
-
 palinBag = set()
 
 for inp in input:
+    palinSet = {(x, (i, i + 1)) for i, x in enumerate(inp)} | {(x + inp[i + 1], (i, i + 2)) for i, x in enumerate(inp) if
+                                                                 i < len(inp) - 2 and inp[i] == inp[i + 1]}
     for palin in palinSet:
         char, (start, end) = palin  # how to claim type in python ?
         # print "check:", char, start, end
