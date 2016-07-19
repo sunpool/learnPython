@@ -1,6 +1,10 @@
 
 # Rabin-Karp hash for string
 def RabinKarp_hash(a):
+    '''
+    :param a: string to query against
+    :return: array of Rabin Karp hash value
+    '''
     rk = []
 
     for i, char in enumerate(a):
@@ -16,6 +20,12 @@ def RabinKarp_hash(a):
 
 
 def query_RK(aRK, sRK, str_len):
+    '''
+    :param aRK: array of RK hash value
+    :param sRK: RK value of pattern string to search for
+    :param str_len: pattern string length
+    :return: array of range tuple in matching sub strings
+    '''
     found = []
     for i, s in enumerate(aRK):
         i += str_len
@@ -28,6 +38,8 @@ def query_RK(aRK, sRK, str_len):
             found.append((i-str_len, i))
     return found
 
+
+# Execute
 a = "bcdabcebc"
 s_str = "bc"
 
