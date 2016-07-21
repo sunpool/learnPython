@@ -1,4 +1,5 @@
 dim = 5
+print xrange(dim), range(dim)
 
 # non directional graph connection is symmetric
 non_directional = ["YYYXX", "YXXY", "XYY", "XY", "X"]
@@ -12,7 +13,7 @@ def getValue_symetric_matrix(i, j, matrix=non_directional):
         col = j - i
     else:
         row = j
-        col = i
+        col = i - j
     print "getVa", row, col
     print
     return matrix[row][col]
