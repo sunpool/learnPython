@@ -7,6 +7,7 @@ wordSet = set(wordList)
 
 childDict = dict()
 
+
 # def BFS_build( beginWord, endWord, wordSet = wordSet, childDict ):
 def searchNextLevel(children, endWord, wordSet, childDict):
     stop = False
@@ -48,24 +49,25 @@ leaveWords = searchNextLevel([beginWord], endWord, set(wordList), begin_word_tre
 end_word_tree = dict()
 rootwords = searchNextLevel([endWord], beginWord, set(wordList), end_word_tree)
 
-
 print childDict, wordSet
 print "begin tree", begin_word_tree
 print "end tree", end_word_tree
 print leaveWords, rootwords
 
+
 # beginWord scoped
-def DFS_travers(leave, acc): #, beginword):
+def DFS_travers(leave, acc):  # , beginword):
     if leave == beginWord:
         print [leave] + acc
         return
         # return leave
 
     # parents = end_word_tree[leave]  # will throw if not exist
-    parents = end_word_tree.get(leave,[])
+    parents = end_word_tree.get(leave, [])
     for par in parents:
         DFS_travers(par, [leave] + acc)
         # print leave
+
 
 for endDict in leaveWords:
     DFS_travers(endDict, ["cog"])
