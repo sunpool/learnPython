@@ -9,6 +9,10 @@ childDict = dict()  # implementation 1
 parentDict = dict()  # implementation 2
 
 
+# same as
+#   mymay.setdefault(key, default)
+#   use python native implementation.
+
 def component_ensure(mymay, key, default):
     if key not in mymay:
         mymay[key] = default
@@ -28,7 +32,8 @@ def searchNextLevel(children, endWord, wordSet, parentDict):
                 if nWord == endWord:
                     stop = True
 
-                    component_ensure(parentDict, nWord, [])
+                    # component_ensure(parentDict, nWord, [])
+                    parentDict.setdefault(nWord, [])
                     parentDict[nWord].append(word)
 
                     hitword.add(word)
@@ -36,7 +41,8 @@ def searchNextLevel(children, endWord, wordSet, parentDict):
                 if nWord in wordSet:
                     # wordSet.remove(nWord)   # wrong! This will remove other equal depth paths, should do after this level is done
 
-                    component_ensure(parentDict, nWord, [])
+                    # component_ensure(parentDict, nWord, [])
+                    parentDict.setdefault(nWord, [])
                     parentDict[nWord].append(word)
 
                     gChildren.add(nWord)
