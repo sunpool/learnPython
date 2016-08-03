@@ -13,8 +13,8 @@ for i, n in enumerate(points):
         (x0, y0) = n
         (x1, y1) = m
         if x0 == x1:
-            lines.setdefault(("inf", x0), {(n, i)})  # todo, find the inf of python
-            lines[("inf", x0)] = lines[("inf", x0)].union({(m, j)})
+            lines.setdefault((float("inf"), x0), {(n, i)})
+            lines[(float("infinity"), x0)] = lines[(float("inf"), x0)].union({(m, j)})
             print n, m
         else:
             slope = (y0 - y1) / (x0 - x1)
