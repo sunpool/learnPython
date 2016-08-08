@@ -1,18 +1,17 @@
 
-target = "afbcacb"
+target = "afbcacbcc"
 pat = "a*acb"
-print len(pat)
 # Dynamic programming
 # sol = list[]
 
 # quick switches
 def wildcardMatching( target, pat ):
-    match = True
+    # match = True
     match_target_id, match_pattern_id = -1, -1
 
     it = ip = 0
     # for it, t in enumerate(target):
-    while it < len(target) and match:
+    while it < len(target):
         t = target[it]
 
         if ip < len(pat) and (t == pat[ip] or pat[ip] == "?"):
@@ -26,19 +25,16 @@ def wildcardMatching( target, pat ):
             ip = match_pattern_id + 1   # reset to last * position + 1
             it = match_target_id
         else:
-            match = False
+            return False
 
-    print match, ip
-    while ip < len(pat) and match:
-        if pat[ip] != "*":
-            match = False
+    while ip < len(pat) and pat[ip] == "*":
         ip += 1
 
-    print match
-    return match
+    print ip == len(pat)
+    return ip == len(pat)
 
-target = "afbcacb"
-pat = "a*bcb"
+target = "afbcacbcacb"
+pat = "a*acb"
 print len(pat)
 
 wildcardMatching( target, pat )
