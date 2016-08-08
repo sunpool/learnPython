@@ -1,6 +1,6 @@
 
-target = "abcbaacb"
-pat = "a*bcb"
+target = "afbcacb"
+pat = "a*acb"
 print len(pat)
 # Dynamic programming
 # sol = list[]
@@ -15,15 +15,10 @@ it = ip = 0
 while it < len(target) and match:
     t = target[it]
 
-    if ip < len(pat):
-        p = pat[ip]
-    else:
-        break
-
-    if t == p or p == "?":
+    if ip < len(pat) and (t == pat[ip] or pat[ip] == "?"):
         it += 1     # python does not have operator ++ -- ?
         ip += 1
-    elif p == "*":
+    elif ip < len(pat) and pat[ip] == "*":
         match_target_id, match_pattern_id = it, ip
         ip += 1
     elif match_target_id != -1:
