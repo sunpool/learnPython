@@ -15,6 +15,7 @@ for ip, pStr in enumerate(pat):
                 sol[it] = sol[it - 1]
             else:
                 sol[it] = False
+        sol[0] = False
 
 print sol[len(target)]
 
