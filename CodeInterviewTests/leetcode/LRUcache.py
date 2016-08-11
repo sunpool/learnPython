@@ -94,6 +94,8 @@ try:
     print LRU_cache_heap.get("a")
 except KeyError as ke:
     print "no such key warning: ", ke
+else:
+    raise
 
 print LRU_cache_heap.set("x", 20), LRU_cache_heap.get('x')
 print LRU_cache_heap.set("x", 1),  LRU_cache_heap.set("y", 1)
