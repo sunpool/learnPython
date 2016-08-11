@@ -23,13 +23,17 @@ class LRU_cache():
         return self.store[key]
 
 
-LRU = LRU_cache()
+LRU_cache_heap = LRU_cache(2)
 
-print LRU.get("hey ")
 
-print LRU.set("ha", 20)
+print LRU_cache_heap.set("x", 20), LRU_cache_heap.get('x')
+print LRU_cache_heap.set("x", 1),  LRU_cache_heap.set("y", 1)
+print LRU_cache_heap.store
+print LRU_cache_heap.set("z", 1)
+print LRU_cache_heap.store
 
-print LRU.get("ha"), LRU
+
+
 
 # use heapq
 #   drawback: internal storage can go beyond capacity, as the deleted ones are only marked as dead
@@ -84,8 +88,6 @@ class LRU_heap():
         raise KeyError("no such key")
 
 LRU_cache_heap = LRU_heap(2)
-
-# LRU_cache_heap = LRU_cache(2)
 
 print "Heap implementation: "
 try:
