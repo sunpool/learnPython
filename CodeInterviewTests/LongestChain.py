@@ -6,7 +6,7 @@ word_dict = {}
 
 def walk_down_tree(word, word_set, word_dict):
 
-    print "walk down tree ", word
+    print "walk_down_tree:", word
     max_height = 0
     for i, char in enumerate(word):
         nword = word[0:i] + word[i + 1:]
@@ -21,13 +21,13 @@ def walk_down_tree(word, word_set, word_dict):
 max_height = 0
 for word in word_set:
     if len(word) >= max_height:
-        print "search longest ", word
+        print "search longest:", word
         height = walk_down_tree(word, word_set, word_dict)
         max_height = max(height, max_height)
         print ""
 
-print word_dict
-print max_height
+print "cached chain size:", word_dict
+print "Longest chain:", max_height
 
 # dictWord.sort(key=lambda x: len(x), reverse=True)
 # print dictWord
