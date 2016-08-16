@@ -47,8 +47,9 @@ def searchNextLevel(children, endWord, wordSet, parentDict):
 
                     gChildren.add(nWord)
 
-    for word in gChildren:  # remove redundant after this level is done
-        wordSet.remove(word)
+    # for word in gChildren:  # remove redundant after this level is done
+    #     wordSet.remove(word)
+    wordSet = wordSet - gChildren
 
     if not stop:
         return searchNextLevel(gChildren, endWord, wordSet, childDict)
