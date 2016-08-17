@@ -66,6 +66,8 @@ for i, line in enumerate(lines[:len(lines) - 1]):
     strLines.append(strLine)
 
 lastLine = lines[len(lines) - 1]
-strLines.append(reduce(lambda el, rdc: rdc + " " + el, lastLine[1:], lastLine[0]))
+strLastLine = reduce(lambda el, rdc: rdc + " " + el, lastLine[1:], lastLine[0])
+strLastLine += " "*(L-len(strLastLine))
+strLines.append( strLastLine )
 
 print strLines
