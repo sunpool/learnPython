@@ -40,17 +40,6 @@ wordList = ["hot", "dot", "dog", "hox", "lot", "log"]
 
 wordSet = set(wordList)
 
-
-# same as
-#   mymap.setdefault(key, default)
-#   use python native implementation.
-#
-# def component_ensure(mymap, key, default):
-#     if key not in mymap:
-#         mymap[key] = default
-#     return mymap[key]
-
-
 def searchNextLevel(children, endWord, wordSet, parentDict):
     stop = False
     gChildren = set()
@@ -76,6 +65,7 @@ def searchNextLevel(children, endWord, wordSet, parentDict):
                     parentDict[nWord].append(word)
                     gChildren.add(nWord)
 
+    # return if no path. otherwise infinite loop
     if len(gChildren) == 0 and not stop:
         return set()
 
@@ -102,7 +92,7 @@ def DFS_travers(leave, acc, parentDict):
         paths = paths + DFS_travers(par, new_acc, parentDict)
     return paths
 
-
+# Method Call
 begin_word_tree = dict()
 leaveWords = searchNextLevel([beginWord], endWord, set(wordList), begin_word_tree)
 ret = DFS_travers(endWord, [[]], begin_word_tree)
