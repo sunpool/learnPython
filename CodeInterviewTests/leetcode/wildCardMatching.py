@@ -1,6 +1,9 @@
 target = "afbcacb"
 pat = "a*acb"
 
+target = "xxy"
+pat = "x?y"
+
 # Dynamic programming
 sol = [False] * (len(target) + 1)
 sol[0] = True
@@ -11,12 +14,14 @@ for ip, pStr in enumerate(pat):
     else:
         # for it, tStr in enumerate(target):
         for it in xrange(len(target), 0, -1):
-            if target[it - 1] == pStr or pStr == "?":
-                sol[it] = sol[it - 1]
-            else:
-                sol[it] = False
+            # if target[it - 1] == pStr or pStr == "?":
+            #     sol[it] = sol[it - 1]
+            # else:
+            #     sol[it] = False
+            sol[it] = sol[it - 1] and (target[it - 1] == pStr or pStr == "?")
         sol[0] = False
 
+print sol
 print sol[len(target)]
 
 
