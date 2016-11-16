@@ -33,10 +33,9 @@ wordList = ["hot", "dot", "dog", "hox", "lot", "log"]
 # endWord = "dog"
 # wordList = ["hot", "dog"]
 
-# beginWord = "h"
-# endWord = "d"
+# beginWord = "a"
+# endWord = "c"
 # wordList = ["b", "c"]
-
 
 wordSet = set(wordList)
 
@@ -54,12 +53,10 @@ def searchNextLevel(children, endWord, wordSet, parentDict):
                 nWord = word[0:i] + chr(ord("a") + j) + word[i + 1:]
                 if nWord == endWord:
                     stop = True
-
                     parentDict.setdefault(nWord, [])
                     parentDict[nWord].append(word)
                     # hitword.add(word)
-
-                if nWord in wordSet:
+                elif nWord in wordSet:
                     # wordSet.remove(nWord)   # wrong! This will remove other equal depth paths, should do after this level is done
                     parentDict.setdefault(nWord, [])
                     parentDict[nWord].append(word)
@@ -95,5 +92,7 @@ def DFS_travers(leave, acc, parentDict):
 # Method Call
 begin_word_tree = dict()
 leaveWords = searchNextLevel([beginWord], endWord, set(wordList), begin_word_tree)
+
+print begin_word_tree
 ret = DFS_travers(endWord, [[]], begin_word_tree)
 print ret
