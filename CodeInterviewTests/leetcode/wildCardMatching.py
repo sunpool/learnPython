@@ -2,17 +2,17 @@ target = "afbcacb"
 pat = "a*acb"
 
 target = "xxy"
-pat = "x?y"
+pat = "xxz"
 
 # Dynamic programming
 sol = [False] * (len(target) + 1)
 sol[0] = True
 for ip, pStr in enumerate(pat):
     if pStr == "*":
-        for it in xrange(1, len(target)):
+        for it in xrange(1, len(target)+1):         # was missing "+ 1" in the range
             sol[it] = sol[it - 1] or sol[it]
+        sol[0] = True                               # missing condition on sol[0]
     else:
-        # for it, tStr in enumerate(target):
         for it in xrange(len(target), 0, -1):
             # if target[it - 1] == pStr or pStr == "?":
             #     sol[it] = sol[it - 1]
@@ -20,6 +20,18 @@ for ip, pStr in enumerate(pat):
             #     sol[it] = False
             sol[it] = sol[it - 1] and (target[it - 1] == pStr or pStr == "?")
         sol[0] = False
+
+print sol
+print sol[len(target)]
+
+
+# extreme way of expression
+sol = [False] * (len(target) + 1)
+sol[0] = True
+for pStr in pat:
+    for it in xrange(len(target), 0, -1):
+        sol[it] = ((pStr == "*") and sol[it - 1] or sol[it]) or ((target[it - 1] == pStr or pStr == "?") and sol[it-1])
+    sol[0] = pStr == "*"
 
 print sol
 print sol[len(target)]
@@ -51,8 +63,7 @@ def wildcardMatching(target, pat):
     while ip < len(pat) and pat[ip] == "*":
         ip += 1
 
-    print ip == len(pat)
     return ip == len(pat)
 
 
-wildcardMatching(target, pat)
+print wildcardMatching(target, pat)
