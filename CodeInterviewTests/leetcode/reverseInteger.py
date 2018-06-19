@@ -15,6 +15,7 @@ def revertInt(x):
         if ret * 10 < Int_Min or (ret * 10 == Int_Min and pop < -8):
             return 0
         ret = ret * 10 + pop
+    return ret
 
 # def revertInt2(x):
 #     if x < 0:
