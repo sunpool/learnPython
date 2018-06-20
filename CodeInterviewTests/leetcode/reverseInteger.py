@@ -17,11 +17,24 @@ def revertInt(x):
         ret = ret * 10 + pop
     return ret
 
-# def revertInt2(x):
-#     if x < 0:
-#         return -revertInt2(-x)
-#     for(;x != 0; x/=10):
-#         d = x % 10
-#         if d < 8:
-#             if x > Int_Max
-#         if x > (d < 8 ? Int_Max : Int_Min):
+
+class Solution:
+    def reverse(self, x):
+        """
+        :type x: int
+        :rtype: int
+        """
+        ret = 0
+        Int_Max = 0x7FFFFFFF
+        # Int_Min = 0x7FFFFFFF - 2
+
+        if x < 0:
+            return - self.reverse(-x)
+        while x != 0:
+            pop = x % 10
+            x = x // 10
+            if ret * 10 > Int_Max or (ret * 10 == Int_Max and pop > 7):
+                return 0
+            ret = ret * 10 + pop
+        return ret
+
