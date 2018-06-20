@@ -26,7 +26,7 @@ class Solution:
         """
         ret = 0
         Int_Max = 0x7FFFFFFF
-        # Int_Min = 0x7FFFFFFF - 2
+        # Int_Min = 0x80000000
 
         if x < 0:
             return - self.reverse(-x)
