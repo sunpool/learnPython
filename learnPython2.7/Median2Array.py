@@ -26,11 +26,11 @@ def median(A, B):
         raise ValueError
 
     imin, imax, half_len = 0, m, (m + n + 1) / 2
-    print m, n
+    print(m, n)
     while imin <= imax:
         i = (imin + imax) / 2
         j = half_len - i
-        print imin, imax, i, j
+        print(imin, imax, i, j)
         if i < m and B[j - 1] > A[i]:
             # i is too small, must increase it
             imin = i + 1
@@ -63,4 +63,4 @@ A = [1, 3, 4, 5, 6]
 B = [2]
 
 ret = median(A, B)
-print ret
+print(ret)
