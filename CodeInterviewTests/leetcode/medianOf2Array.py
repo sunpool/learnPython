@@ -16,22 +16,22 @@ class Solution:
 
         # search in smaller loop
         i_start, i_end = 0, len(m_nums)
-        half_len = (m+n+1)//2
+        half_len = (m + n + 1) // 2
 
         while i_start < i_end:
             i = (i_start + i_end) // 2
             j = half_len - i
-            if i < m and n_nums[j-1] > m_nums[i]:
+            if i < m and n_nums[j - 1] > m_nums[i]:
                 i_start = i + 1
-            elif i > 0 and n_nums[j] < m_nums[i-1]:
+            elif i > 0 and n_nums[j] < m_nums[i - 1]:
                 i_end = i - 1
             else:
                 if i == 0:
-                    max_left = n_nums[j-1]
+                    max_left = n_nums[j - 1]
                 elif j == 0:
-                    max_left = m_nums[i-1]
+                    max_left = m_nums[i - 1]
                 else:
-                    max_left = max(n_nums[j-1], m_nums[i-1])
+                    max_left = max(n_nums[j - 1], m_nums[i - 1])
 
                 if (m + n) % 2 == 1:
                     return max_left
@@ -44,10 +44,6 @@ class Solution:
                     min_right = min(n_nums[j], m_nums[i])
 
                 return (max_left + min_right) / 2
-
-
-
-
 
 
 solution = Solution()
