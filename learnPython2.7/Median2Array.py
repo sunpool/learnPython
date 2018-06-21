@@ -1,4 +1,3 @@
-
 # There are two sorted arrays nums1 and nums2 of size m and n respectively.
 #
 # Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).
@@ -23,7 +22,7 @@ def median(A, B):
     m, n = len(A), len(B)
     if m > n:
         A, B, m, n = B, A, n, m
-    if n == 0:˚
+    if n == 0:
         raise ValueError
 
     imin, imax, half_len = 0, m, (m + n + 1) / 2
@@ -57,11 +56,10 @@ def median(A, B):
                 min_of_right = A[i]
             else:
                 min_of_right = min(A[i], B[j])
-
             return (max_of_left + min_of_right) / 2.0
 
 
-A = [1, 3,4,5,6]
+A = [1, 3, 4, 5, 6]
 B = [2]
 
 ret = median(A, B)
